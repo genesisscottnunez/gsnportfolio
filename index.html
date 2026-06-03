@@ -8,21 +8,21 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
- --navy:#0b1826;
- --navy-mid:#112030;
- --navy-light:#1a2f45;
- --gold:#c8a84b;
- --gold-light:#e2cc7e;
- --gold-pale:rgba(200,168,75,.08);
- --gold-border:rgba(200,168,75,.22);
- --teal:#1e7268;
- --teal-soft:#2a9488;
- --cream:#f5f1eb;
- --warm:#fdfaf6;
+ --navy:#111827;
+ --navy-mid:#1f2937;
+ --navy-light:#374151;
+ --gold:#f4c542;
+ --gold-light:#ffe28a;
+ --gold-pale:rgba(244,197,66,.14);
+ --gold-border:rgba(244,197,66,.38);
+ --teal:#2f6f73;
+ --teal-soft:#3f8f94;
+ --cream:#f7f3ec;
+ --warm:#ffffff;
  --white:#ffffff;
- --text:#1a1a1a;
- --muted:#6b6b6b;
- --border:rgba(0,0,0,.07);
+ --text:#111827;
+ --muted:#4b5563;
+ --border:rgba(17,24,39,.08);
 }
 html{scroll-behavior:smooth}
 body{font-family:'Outfit',sans-serif;background:var(--warm);color:var(--text);line-height:1.7;overflow-x:hidden}
@@ -30,17 +30,35 @@ body{font-family:'Outfit',sans-serif;background:var(--warm);color:var(--text);li
 /* ── NAV ── */
 nav{
  position:fixed;top:0;left:0;right:0;z-index:200;
- background:rgba(11,24,38,.97);backdrop-filter:blur(16px);
+ background:rgba(17,24,39,.97);backdrop-filter:blur(16px);
  border-bottom:1px solid var(--gold-border);
  height:58px;padding:0 2.5rem;
  display:flex;align-items:center;justify-content:space-between;
 }
-.nav-brand{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:600;color:var(--gold);text-decoration:none;letter-spacing:.04em}
-.nav-links{display:flex;gap:1.8rem;list-style:none;align-items:center}
-.nav-links a{color:rgba(255,255,255,.5);text-decoration:none;font-size:.75rem;letter-spacing:.09em;text-transform:uppercase;transition:color .2s}
-.nav-links a:hover{color:rgba(255,255,255,.9)}
-.nav-hire{background:var(--gold)!important;color:var(--navy)!important;padding:.38rem 1.15rem;border-radius:4px;font-weight:600!important}
-.nav-hire:hover{background:var(--gold-light)!important}
+.nav-brand{font-family:'Cormorant Garamond',serif;font-size:1.18rem;font-weight:700;color:var(--gold);text-decoration:none;letter-spacing:.04em;white-space:nowrap}
+.nav-links{display:flex;gap:.28rem;list-style:none;align-items:center}
+.nav-links a{
+ position:relative;display:inline-flex;align-items:center;justify-content:center;
+ color:rgba(255,255,255,.74);text-decoration:none;
+ font-size:.7rem;font-weight:600;letter-spacing:.11em;text-transform:uppercase;
+ transition:color .2s,background .2s,border-color .2s,transform .15s,box-shadow .2s;
+ padding:.5rem .76rem;border-radius:999px;border:1px solid rgba(255,255,255,.035);
+ white-space:nowrap;overflow:hidden;
+}
+.nav-links a::after{
+ content:'';position:absolute;left:50%;bottom:.28rem;width:0;height:2px;
+ background:linear-gradient(90deg,var(--gold),var(--gold-light));
+ border-radius:99px;transform:translateX(-50%);transition:width .22s ease;
+}
+.nav-links a:hover{
+ color:#fff;background:rgba(244,197,66,.10);
+ border-color:rgba(244,197,66,.22);transform:translateY(-1px);
+ box-shadow:0 4px 18px rgba(0,0,0,.12);
+}
+.nav-links a:hover::after{width:42%}
+.nav-hire{background:linear-gradient(135deg,var(--gold),var(--gold-light))!important;color:var(--navy)!important;padding:.5rem 1.05rem!important;border-radius:999px!important;font-weight:800!important;border-color:transparent!important;box-shadow:0 4px 18px rgba(244,197,66,.26);letter-spacing:.08em!important}
+.nav-hire::after{display:none!important}
+.nav-hire:hover{background:linear-gradient(135deg,var(--gold-light),var(--gold))!important;color:var(--navy)!important;box-shadow:0 7px 26px rgba(244,197,66,.36)}
 
 /* ── STICKY CTA ── */
 .sticky-cta{
@@ -56,11 +74,11 @@ nav{
  padding:.75rem 1.5rem;border-radius:50px;
  text-decoration:none;font-weight:700;font-size:.82rem;
  letter-spacing:.03em;
- box-shadow:0 6px 28px rgba(200,168,75,.4),0 2px 8px rgba(0,0,0,.25);
+ box-shadow:0 6px 28px rgba(244,197,66,.36),0 2px 8px rgba(0,0,0,.25);
  transition:transform .2s,box-shadow .2s,background .2s;
  white-space:nowrap;
 }
-.sticky-btn:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 10px 36px rgba(200,168,75,.5)}
+.sticky-btn:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 10px 36px rgba(244,197,66,.44)}
 .sticky-btn svg{flex-shrink:0}
 @media(max-width:600px){
  .sticky-cta{bottom:1.2rem;right:1rem}
@@ -76,18 +94,18 @@ nav{
 }
 .hero-grid{
  position:absolute;inset:0;pointer-events:none;
- background-image:linear-gradient(rgba(200,168,75,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(200,168,75,.03) 1px,transparent 1px);
+ background-image:linear-gradient(rgba(244,197,66,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(244,197,66,.035) 1px,transparent 1px);
  background-size:68px 68px;
 }
-.hero-glow{position:absolute;right:-8%;bottom:-12%;width:650px;height:650px;background:radial-gradient(circle,rgba(200,168,75,.06) 0%,transparent 65%);pointer-events:none}
+.hero-glow{position:absolute;right:-8%;bottom:-12%;width:650px;height:650px;background:radial-gradient(circle,rgba(244,197,66,.07) 0%,transparent 65%);pointer-events:none}
 .hero-inner{max-width:1060px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 300px;gap:5rem;align-items:center;position:relative;z-index:2}
 .hero-eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem}
 .hero-dot{width:7px;height:7px;border-radius:50%;background:var(--gold);animation:blink 2.4s ease-in-out infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
 .hero-h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,5.2vw,4.5rem);font-weight:700;line-height:1.07;color:#fff;margin-bottom:.5rem;letter-spacing:-.015em}
 .hero-h1 span{color:var(--gold)}
-.hero-role{font-size:.88rem;color:rgba(255,255,255,.42);letter-spacing:.07em;text-transform:uppercase;margin-bottom:1.7rem}
-.hero-value{font-size:.97rem;color:rgba(255,255,255,.65);line-height:1.92;margin-bottom:2.2rem;max-width:490px}
+.hero-role{font-size:.88rem;color:rgba(255,255,255,.72);letter-spacing:.07em;text-transform:uppercase;margin-bottom:1.7rem}
+.hero-value{font-size:.97rem;color:rgba(255,255,255,.78);line-height:1.92;margin-bottom:2.2rem;max-width:490px}
 .hero-value strong{color:rgba(255,255,255,.88);font-weight:500}
 
 /* Hero CTAs */
@@ -99,9 +117,9 @@ nav{
  padding:.85rem 2rem;border-radius:6px;
  text-decoration:none;font-weight:700;font-size:.88rem;letter-spacing:.03em;
  transition:background .2s,transform .15s,box-shadow .2s;
- box-shadow:0 0 24px rgba(200,168,75,.22);
+ box-shadow:0 0 24px rgba(244,197,66,.22);
 }
-.btn-primary:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 0 40px rgba(200,168,75,.38)}
+.btn-primary:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 0 40px rgba(244,197,66,.34)}
 .btn-primary .shine{position:absolute;inset:0;background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.18) 50%,transparent 60%);transform:translateX(-100%);transition:transform .5s ease}
 .btn-primary:hover .shine{transform:translateX(100%)}
 .btn-secondary{
@@ -121,15 +139,15 @@ nav{
 /* Hero photo */
 .hero-photo-col{display:flex;justify-content:center}
 .photo-wrap{position:relative;width:260px;height:316px}
-.photo-inner{width:100%;height:100%;border-radius:130px 130px 100px 100px;overflow:hidden;border:2px solid rgba(200,168,75,.28);background:var(--navy-mid)}
+.photo-inner{width:100%;height:100%;border-radius:130px 130px 100px 100px;overflow:hidden;border:2px solid rgba(244,197,66,.28);background:var(--navy-mid)}
 .photo-inner img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
-.photo-ring{position:absolute;inset:-11px;border:1px solid rgba(200,168,75,.1);border-radius:141px 141px 111px 111px;pointer-events:none}
+.photo-ring{position:absolute;inset:-11px;border:1px solid rgba(244,197,66,.12);border-radius:141px 141px 111px 111px;pointer-events:none}
 .photo-bar{position:absolute;bottom:-7px;left:50%;transform:translateX(-50%);width:52px;height:3px;background:linear-gradient(90deg,var(--gold),var(--teal-soft));border-radius:2px}
 
 /* ── TRUST STRIP ── */
-.trust-strip{background:var(--navy-mid);border-top:1px solid rgba(200,168,75,.1);border-bottom:1px solid rgba(200,168,75,.1);padding:1.2rem 2.5rem}
+.trust-strip{background:var(--navy-mid);border-top:1px solid rgba(244,197,66,.12);border-bottom:1px solid rgba(244,197,66,.12);padding:1.2rem 2.5rem}
 .trust-inner{max-width:1060px;margin:0 auto;display:flex;flex-wrap:wrap;gap:.6rem 2rem;justify-content:center;align-items:center}
-.trust-item{display:flex;align-items:center;gap:.55rem;font-size:.78rem;color:rgba(255,255,255,.55);white-space:nowrap}
+.trust-item{display:flex;align-items:center;gap:.55rem;font-size:.78rem;color:rgba(255,255,255,.75);white-space:nowrap}
 .trust-check{color:var(--gold);font-size:.9rem;flex-shrink:0}
 
 /* ── SECTION BASE ── */
@@ -141,7 +159,7 @@ h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.9rem,3.2vw,2.6rem);f
 .lead{font-size:.96rem;color:var(--muted);max-width:560px;line-height:1.85}
 
 /* ── ABOUT ── */
-.about{background:var(--cream)}
+.about{background:#f7f5f0}
 .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;margin-top:3rem}
 .about-text p{font-size:.94rem;color:var(--muted);line-height:1.92;margin-bottom:1rem}
 .about-pull{background:var(--navy);border-radius:10px;padding:1.5rem 1.7rem;margin-top:1.4rem}
@@ -154,7 +172,7 @@ h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.9rem,3.2vw,2.6rem);f
 .acard p{font-size:.76rem;color:var(--muted);line-height:1.55}
 
 /* ── WHO I SUPPORT ── */
-.who{background:var(--warm)}
+.who{background:#ffffff}
 .who-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:3rem}
 .who-card{
  background:#fff;border:1px solid var(--border);border-radius:12px;
@@ -167,7 +185,7 @@ h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.9rem,3.2vw,2.6rem);f
 .who-card p{font-size:.78rem;color:var(--muted);line-height:1.65}
 
 /* ── WHY ── */
-.why{background:var(--cream)}
+.why{background:#f7f5f0}
 .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.3rem;margin-top:3rem}
 .wcard{background:#fff;border:1px solid var(--border);border-top:3px solid var(--gold);border-radius:12px;padding:1.8rem;transition:transform .2s,box-shadow .2s}
 .wcard:hover{transform:translateY(-4px);box-shadow:0 14px 40px rgba(0,0,0,.08)}
@@ -182,15 +200,15 @@ h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.9rem,3.2vw,2.6rem);f
 .approach .s-tag::before{background:var(--gold)}
 .approach-inner{max-width:1060px;margin:0 auto}
 .approach-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.3rem;margin-top:3rem}
-.ap-card{background:rgba(255,255,255,.04);border:1px solid rgba(200,168,75,.13);border-radius:12px;padding:1.8rem}
+.ap-card{background:rgba(255,255,255,.04);border:1px solid rgba(244,197,66,.16);border-radius:12px;padding:1.8rem}
 .ap-num{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:700;color:var(--gold);opacity:.4;line-height:1;margin-bottom:.5rem}
 .ap-card h3{font-size:.92rem;font-weight:600;color:#fff;margin-bottom:.4rem}
-.ap-card p{font-size:.82rem;color:rgba(255,255,255,.48);line-height:1.75}
-.approach-quote{margin-top:3rem;border-left:3px solid var(--gold);padding:1.2rem 1.8rem;background:rgba(200,168,75,.05);border-radius:0 10px 10px 0}
+.ap-card p{font-size:.82rem;color:rgba(255,255,255,.72);line-height:1.75}
+.approach-quote{margin-top:3rem;border-left:3px solid var(--gold);padding:1.2rem 1.8rem;background:rgba(244,197,66,.07);border-radius:0 10px 10px 0}
 .approach-quote p{font-family:'Cormorant Garamond',serif;font-size:1.18rem;font-style:italic;color:rgba(255,255,255,.75);line-height:1.7;margin:0}
 
 /* ── SERVICES ── */
-.services{background:var(--cream)}
+.services{background:#ffffff}
 .svc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.3rem;margin-top:3rem}
 .svc{background:#fff;border:1px solid var(--border);border-radius:13px;padding:1.9rem;position:relative;overflow:hidden;transition:transform .2s,box-shadow .2s}
 .svc::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),var(--teal-soft))}
@@ -202,7 +220,7 @@ h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.9rem,3.2vw,2.6rem);f
 .stag{background:rgba(30,114,104,.08);color:var(--teal);font-size:.68rem;padding:3px 10px;border-radius:100px;font-weight:500}
 
 /* ── EXPERIENCE ── */
-.exp-sec{background:var(--warm)}
+.exp-sec{background:#f7f5f0}
 .tl{display:flex;flex-direction:column;gap:2.5rem;margin-top:3rem;position:relative}
 .tl::before{content:'';position:absolute;left:192px;top:0;bottom:0;width:1px;background:rgba(200,168,75,.15)}
 .tl-item{display:grid;grid-template-columns:182px 26px 1fr;gap:0 1.4rem;align-items:start}
@@ -219,7 +237,7 @@ h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.9rem,3.2vw,2.6rem);f
 .tl-list li::before{content:'→';position:absolute;left:0;color:var(--gold);font-size:.7rem}
 
 /* ── SKILLS & TOOLS ── */
-.st-sec{background:var(--cream)}
+.st-sec{background:#ffffff}
 .st-top{display:grid;grid-template-columns:1fr 1fr;gap:4rem;margin-top:3rem}
 .st-col-title{font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;color:var(--teal);font-weight:500;margin-bottom:1.1rem}
 .ops-grid{display:grid;grid-template-columns:1fr 1fr;gap:.85rem}
@@ -236,12 +254,12 @@ h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.9rem,3.2vw,2.6rem);f
 .pill.hi{background:var(--navy);border-color:var(--navy);color:var(--gold-light);font-weight:500}
 
 /* ── EDUCATION ── */
-.edu-sec{background:var(--warm)}
+.edu-sec{background:#f7f5f0}
 .edu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.3rem;margin-top:3rem}
 .edu-card{background:#fff;border:1px solid var(--border);border-radius:12px;padding:1.75rem;position:relative;overflow:hidden;transition:transform .2s,box-shadow .2s}
 .edu-card::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),var(--teal-soft))}
 .edu-card:hover{transform:translateY(-3px);box-shadow:0 10px 32px rgba(0,0,0,.08)}
-.edu-icon{width:40px;height:40px;border-radius:9px;background:rgba(200,168,75,.1);border:1px solid rgba(200,168,75,.2);display:flex;align-items:center;justify-content:center;font-size:1.2rem;margin-bottom:.85rem}
+.edu-icon{width:40px;height:40px;border-radius:9px;background:rgba(244,197,66,.12);border:1px solid rgba(244,197,66,.22);display:flex;align-items:center;justify-content:center;font-size:1.2rem;margin-bottom:.85rem}
 .edu-title{font-size:.9rem;font-weight:600;color:var(--navy);margin-bottom:.28rem;line-height:1.4}
 .edu-org{font-size:.77rem;color:var(--teal);font-weight:500;margin-bottom:.2rem}
 .edu-yr{font-size:.72rem;color:var(--muted)}
@@ -251,36 +269,39 @@ h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.9rem,3.2vw,2.6rem);f
 .contact-sec h2{color:#fff}
 .contact-sec .s-tag{color:var(--gold)}
 .contact-sec .s-tag::before{background:var(--gold)}
-.c-desc{font-size:.94rem;color:rgba(255,255,255,.48);line-height:1.85;margin-bottom:2.2rem;max-width:600px}
+.c-desc{font-size:.94rem;color:rgba(255,255,255,.72);line-height:1.85;margin-bottom:2.2rem;max-width:600px}
+.contact-proof{font-size:.84rem;color:rgba(255,255,255,.62);line-height:1.75;max-width:620px;margin:-1rem 0 2.1rem;padding-left:1rem;border-left:2px solid var(--gold)}
+.availability-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,215,100,.1);border:1px solid rgba(255,215,100,.28);color:var(--gold-light);font-size:.7rem;font-weight:600;letter-spacing:.11em;text-transform:uppercase;padding:.48rem .85rem;border-radius:100px;margin-bottom:1.15rem}
+.availability-badge span{width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 14px rgba(255,215,100,.75)}
 .c-info-row{display:flex;flex-wrap:wrap;gap:.85rem 2rem;margin-bottom:3rem}
 .c-item{display:flex;align-items:center;gap:.72rem}
-.c-icon{width:32px;height:32px;background:rgba(200,168,75,.09);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:.95rem;flex-shrink:0}
+.c-icon{width:32px;height:32px;background:rgba(244,197,66,.11);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:.95rem;flex-shrink:0}
 .c-label{font-size:.65rem;text-transform:uppercase;letter-spacing:.09em;color:rgba(255,255,255,.28)}
 .c-val{font-size:.85rem;color:rgba(255,255,255,.72)}
-.book-card{position:relative;border-radius:18px;background:linear-gradient(135deg,rgba(255,255,255,.04) 0%,rgba(200,168,75,.06) 100%);border:1px solid var(--gold-border);overflow:hidden;padding:3.8rem 2.5rem;text-align:center;max-width:660px;margin:0 auto}
-.book-glow{position:absolute;top:-50px;left:50%;transform:translateX(-50%);width:480px;height:280px;background:radial-gradient(ellipse,rgba(200,168,75,.09) 0%,transparent 70%);pointer-events:none;z-index:1}
+.book-card{position:relative;border-radius:18px;background:linear-gradient(135deg,rgba(255,255,255,.04) 0%,rgba(244,197,66,.07) 100%);border:1px solid var(--gold-border);overflow:hidden;padding:3.8rem 2.5rem;text-align:center;max-width:660px;margin:0 auto}
+.book-glow{position:absolute;top:-50px;left:50%;transform:translateX(-50%);width:480px;height:280px;background:radial-gradient(ellipse,rgba(244,197,66,.11) 0%,transparent 70%);pointer-events:none;z-index:1}
 .book-inner{position:relative;z-index:2}
 .book-tag{display:inline-flex;align-items:center;gap:8px;font-size:.69rem;letter-spacing:.13em;text-transform:uppercase;color:var(--gold);margin-bottom:1.3rem}
 .book-pulse{display:block;width:7px;height:7px;border-radius:50%;background:var(--gold);animation:bookpulse 2s ease-in-out infinite}
-@keyframes bookpulse{0%{box-shadow:0 0 0 0 rgba(200,168,75,.6)}70%{box-shadow:0 0 0 9px rgba(200,168,75,0)}100%{box-shadow:0 0 0 0 rgba(200,168,75,0)}}
+@keyframes bookpulse{0%{box-shadow:0 0 0 0 rgba(244,197,66,.55)}70%{box-shadow:0 0 0 9px rgba(200,168,75,0)}100%{box-shadow:0 0 0 0 rgba(200,168,75,0)}}
 .book-h{font-family:'Cormorant Garamond',serif;font-size:clamp(1.85rem,3.2vw,2.5rem);font-weight:700;color:#fff;line-height:1.15;margin-bottom:.75rem}
-.book-sub{font-size:.92rem;color:rgba(255,255,255,.48);line-height:1.85;max-width:440px;margin:0 auto 2.2rem}
+.book-sub{font-size:.92rem;color:rgba(255,255,255,.72);line-height:1.85;max-width:440px;margin:0 auto 2.2rem}
 .book-btn{
  position:relative;overflow:hidden;
  display:inline-flex;align-items:center;gap:.65rem;
  background:var(--gold);color:var(--navy);
  padding:1rem 2.6rem;border-radius:8px;
  text-decoration:none;font-weight:700;font-size:.92rem;letter-spacing:.03em;
- box-shadow:0 0 28px rgba(200,168,75,.28),0 4px 14px rgba(200,168,75,.18);
+ box-shadow:0 0 28px rgba(244,197,66,.28),0 4px 14px rgba(244,197,66,.18);
  transition:transform .2s,background .2s,box-shadow .2s;
 }
-.book-btn:hover{background:var(--gold-light);transform:translateY(-3px);box-shadow:0 0 48px rgba(200,168,75,.45),0 8px 24px rgba(200,168,75,.28)}
+.book-btn:hover{background:var(--gold-light);transform:translateY(-3px);box-shadow:0 0 48px rgba(244,197,66,.40),0 8px 24px rgba(244,197,66,.28)}
 .book-btn .shine{position:absolute;inset:0;background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.2) 50%,transparent 60%);transform:translateX(-100%);transition:transform .52s ease}
 .book-btn:hover .shine{transform:translateX(100%)}
 .book-note{font-size:.71rem;color:rgba(255,255,255,.26);margin-top:1rem;letter-spacing:.04em}
 
 /* ── FOOTER ── */
-footer{background:#060e17;padding:3.5rem 2.5rem 2.5rem;border-top:1px solid rgba(200,168,75,.1)}
+footer{background:#060e17;padding:3.5rem 2.5rem 2.5rem;border-top:1px solid rgba(244,197,66,.12)}
 .footer-inner{max-width:1060px;margin:0 auto}
 .footer-top{display:block;margin-bottom:2.5rem;padding-bottom:2.5rem;border-bottom:1px solid rgba(255,255,255,.06);text-align:center}
 .footer-brand-name{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--gold);font-weight:600;margin-bottom:.3rem}
@@ -293,7 +314,7 @@ footer{background:#060e17;padding:3.5rem 2.5rem 2.5rem;border-top:1px solid rgba
 .footer-link:hover{color:rgba(255,255,255,.85)}
 .footer-link-icon{width:28px;height:28px;background:rgba(200,168,75,.08);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:.85rem;flex-shrink:0}
 .footer-bottom{text-align:center}
-.footer-bottom p{font-size:.74rem;color:rgba(255,255,255,.22)}
+.footer-bottom p{font-size:.74rem;color:rgba(255,255,255,.45)}
 
 /* ── MOBILE ── */
 @media(max-width:900px){
@@ -318,6 +339,129 @@ footer{background:#060e17;padding:3.5rem 2.5rem 2.5rem;border-top:1px solid rgba
  .book-card{padding:2.5rem 1.4rem}
  .c-info-row{flex-direction:column;gap:.8rem}
 }
+
+
+/* ── FINAL BACKGROUND CLEANUP: warm, clean, no light-blue middle ── */
+:root{
+ --cream:#faf7f2;
+ --warm:#ffffff;
+ --white:#ffffff;
+ --border:rgba(15,23,42,.09);
+}
+body{background:#ffffff}
+
+/* Keep the brand dark only at the main anchor points */
+.hero{background:var(--navy)}
+.trust-strip{background:var(--navy-mid)}
+.contact-sec{background:var(--navy)}
+
+/* Clean warm alternation with one navy feature section */
+.about{background:#ffffff}
+.who{background:#faf7f2}
+.why{background:#ffffff}
+.approach{background:var(--navy)}
+.services{background:#ffffff}
+.exp-sec{background:#faf7f2}
+.st-sec{background:#ffffff}
+.edu-sec{background:#faf7f2}
+
+/* Keep Approach as the only navy section in the middle */
+.approach h2{color:#ffffff}
+.approach .s-tag{color:var(--gold)}
+.approach .s-tag::before{background:var(--gold)}
+.ap-card{background:rgba(255,255,255,.04);border:1px solid rgba(200,168,75,.16);box-shadow:none}
+.ap-card h3{color:#ffffff}
+.ap-card p{color:rgba(255,255,255,.72)}
+.ap-num{color:var(--gold);opacity:.42}
+.approach-quote{background:rgba(244,197,66,.07);border-left:3px solid var(--gold)}
+.approach-quote p{color:rgba(255,255,255,.78)}
+
+/* Keep cards clean and readable */
+.acard,.who-card,.wcard,.svc,.op-card,.tool-card,.edu-card{background:#ffffff}
+
+
+
+/* ── FINAL PROFESSIONAL COLOR PALETTE: CHARCOAL + CHAMPAGNE + WARM WHITE ── */
+.hero{background:var(--navy)}
+.trust-strip{background:var(--navy-mid)}
+.about{background:#f7f3ec}
+.who{background:#ffffff}
+.why{background:#f7f3ec}
+.approach{background:var(--navy)}
+.services{background:#ffffff}
+.exp-sec{background:#f7f3ec}
+.st-sec{background:#ffffff}
+.edu-sec{background:#f7f3ec}
+.contact-sec{background:var(--navy)}
+.acard,.who-card,.wcard,.svc,.op-card,.tool-card,.edu-card{background:#ffffff}
+.tl-dot{border-color:#f7f3ec}
+
+
+/* ── PREMIUM POLISH: subtle, clean, not flashy ── */
+.hero::before{
+ content:'';position:absolute;inset:0;pointer-events:none;
+ background:
+  radial-gradient(circle at 18% 22%,rgba(244,197,66,.10) 0%,transparent 34%),
+  radial-gradient(circle at 82% 72%,rgba(255,226,138,.08) 0%,transparent 38%);
+ opacity:.9;
+}
+.hero-glow{
+ background:radial-gradient(circle,rgba(244,197,66,.13) 0%,rgba(244,197,66,.045) 38%,transparent 68%);
+ filter:blur(2px);
+}
+.hero-h1 span,.nav-brand,.stat-n{
+ text-shadow:0 0 18px rgba(244,197,66,.16);
+}
+.hero-signature{
+ display:inline-flex;align-items:center;gap:.6rem;
+ color:rgba(255,255,255,.82);
+ font-size:.84rem;font-weight:500;letter-spacing:.06em;
+ text-transform:uppercase;margin:-.7rem 0 2rem;
+ padding:.55rem .85rem;border:1px solid rgba(244,197,66,.20);
+ border-radius:999px;background:rgba(255,255,255,.035);
+ box-shadow:inset 0 0 18px rgba(244,197,66,.04);
+}
+.hero-signature::before{
+ content:'';width:26px;height:1px;background:linear-gradient(90deg,var(--gold),var(--gold-light));
+ display:inline-block;border-radius:999px;
+}
+.btn-primary,.book-btn,.sticky-btn,.nav-hire{
+ background:linear-gradient(135deg,var(--gold) 0%,var(--gold-light) 52%,#fff0b3 100%)!important;
+ box-shadow:0 0 26px rgba(244,197,66,.28),0 10px 28px rgba(0,0,0,.18)!important;
+}
+.btn-primary:hover,.book-btn:hover,.sticky-btn:hover,.nav-hire:hover{
+ transform:translateY(-3px);
+ box-shadow:0 0 44px rgba(244,197,66,.42),0 14px 34px rgba(0,0,0,.22)!important;
+}
+h2{position:relative;display:inline-block;padding-bottom:.55rem}
+h2::after{
+ content:'';position:absolute;left:0;bottom:0;width:54px;height:2px;
+ background:linear-gradient(90deg,var(--gold),var(--gold-light));
+ border-radius:999px;box-shadow:0 0 12px rgba(244,197,66,.28);
+}
+.contact-sec h2::after,.approach h2::after{background:linear-gradient(90deg,var(--gold),var(--gold-light))}
+.acard,.who-card,.wcard,.svc,.op-card,.tool-card,.edu-card,.book-card{
+ transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease,background .22s ease;
+}
+.acard:hover,.who-card:hover,.wcard:hover,.svc:hover,.op-card:hover,.tool-card:hover,.edu-card:hover{
+ transform:translateY(-5px);
+ border-color:rgba(244,197,66,.32);
+ box-shadow:0 18px 46px rgba(17,24,39,.10),0 0 0 1px rgba(244,197,66,.05);
+}
+.ap-card:hover{
+ transform:translateY(-5px);
+ border-color:rgba(244,197,66,.34);
+ background:rgba(255,255,255,.055);
+ box-shadow:0 18px 46px rgba(0,0,0,.18),0 0 28px rgba(244,197,66,.06);
+}
+.s-tag{letter-spacing:.16em}
+.photo-inner{box-shadow:0 18px 60px rgba(0,0,0,.22),0 0 0 1px rgba(244,197,66,.12)}
+.photo-ring{border-color:rgba(244,197,66,.18);box-shadow:0 0 34px rgba(244,197,66,.08)}
+@media(max-width:900px){
+ .hero-signature{font-size:.74rem;letter-spacing:.04em;margin:-.5rem 0 1.6rem;flex-wrap:wrap}
+ h2{display:inline-block}
+}
+
 </style>
 </head>
 <body>
@@ -326,11 +470,15 @@ footer{background:#060e17;padding:3.5rem 2.5rem 2.5rem;border-top:1px solid rgba
 <nav>
  <a class="nav-brand" href="#">Genesis Scott Nuñez</a>
  <ul class="nav-links">
+ <li><a href="#home">Home</a></li>
  <li><a href="#about">About</a></li>
+ <li><a href="#who">Who I Support</a></li>
+ <li><a href="#why">Why Me</a></li>
+ <li><a href="#approach">Approach</a></li>
  <li><a href="#services">Services</a></li>
  <li><a href="#experience">Experience</a></li>
- <li><a href="#education">Education</a></li>
  <li><a href="#skills">Skills</a></li>
+ <li><a href="#education">Education</a></li>
  <li><a href="#contact" class="nav-hire">Book a Call</a></li>
  </ul>
 </nav>
@@ -353,6 +501,7 @@ footer{background:#060e17;padding:3.5rem 2.5rem 2.5rem;border-top:1px solid rgba
  <h1 class="hero-h1">Genesis<br>Scott <span>Nuñez</span></h1>
  <p class="hero-role">Operations-Focused Virtual Assistant &nbsp;·&nbsp; Customer Support &nbsp;·&nbsp; Real Estate Operations</p>
  <p class="hero-value">Helping business owners stay organized with <strong>reliable customer communication</strong>, CRM updates, appointment setting, lead follow-up, and real estate operations support. Backed by 9 years of enterprise BPO experience with U.S.-based telecom customers.</p>
+ <p class="hero-signature">Reliable support. Organized systems. Clear communication.</p>
  <div class="hero-ctas">
  <a href="https://calendar.app.google/MM4NTDqZ4q5gtJwGA" target="_blank" rel="noopener noreferrer" class="btn-primary">
  <span class="shine"></span>
@@ -386,7 +535,7 @@ footer{background:#060e17;padding:3.5rem 2.5rem 2.5rem;border-top:1px solid rgba
  <div class="trust-item"><span class="trust-check">✔</span>9 Years Enterprise Customer Support</div>
  <div class="trust-item"><span class="trust-check">✔</span>100% Attendance Across 9 Years</div>
  <div class="trust-item"><span class="trust-check">✔</span>Real Estate Operations Support</div>
- <div class="trust-item"><span class="trust-check">✔</span>CRM & Pipeline Management</div>
+ <div class="trust-item"><span class="trust-check">✔</span>CRM & Lead Tracking</div>
  <div class="trust-item"><span class="trust-check">✔</span>Remote-Ready & U.S. Client Focused</div>
  <div class="trust-item"><span class="trust-check">✔</span>Available EST / PST / GMT / AEST</div>
  </div>
@@ -407,9 +556,9 @@ footer{background:#060e17;padding:3.5rem 2.5rem 2.5rem;border-top:1px solid rgba
  </div>
  </div>
  <div class="about-cards">
- <div class="acard"><div class="acard-i">🏡</div><h3>Real Estate Support</h3><p>Lead qualification, appointment setting, pipeline management, and follow-up sequences.</p></div>
+ <div class="acard"><div class="acard-i">🏡</div><h3>Real Estate Support</h3><p>Lead qualification, appointment setting, lead tracking, and buyer follow-up.</p></div>
  <div class="acard"><div class="acard-i">📞</div><h3>Customer Support</h3><p>Omnichannel support across phone, email, and chat with escalation handling and inbound sales support.</p></div>
- <div class="acard"><div class="acard-i">⚡</div><h3>CRM & Pipeline Support</h3><p>GoHighLevel practice and CRM training. Adaptable to Salesforce, Zendesk, and HubSpot.</p></div>
+ <div class="acard"><div class="acard-i">⚡</div><h3>CRM & Workflow Support</h3><p>GoHighLevel practice and CRM training. Adaptable to Salesforce, Zendesk, and HubSpot.</p></div>
  <div class="acard"><div class="acard-i">🤖</div><h3>AI-Assisted Support</h3><p>Using AI tools for research, drafting, organizing tasks, and workflow support.</p></div>
  </div>
  </div>
@@ -442,7 +591,7 @@ footer{background:#060e17;padding:3.5rem 2.5rem 2.5rem;border-top:1px solid rgba
  <div class="why-grid">
  <div class="wcard"><span class="wcard-icon">🏆</span><h3>9-Year Track Record</h3><p>One employer, nine years, and a 100% attendance record. That level of consistency is rare in remote work — and exactly what U.S. clients need from a long-term support hire.</p></div>
  <div class="wcard"><span class="wcard-icon">📞</span><h3>Enterprise Support Experience</h3><p>Trained on high-volume U.S. telecom accounts. Billing, technical, account-related concerns, and customer escalations — I've handled the difficult conversations professionally.</p></div>
- <div class="wcard"><span class="wcard-icon">🏡</span><h3>Real Estate Operations Background</h3><p>Lead vetting, calendar coordination, and CRM pipeline updates — I understand the pace of real estate operations and can support teams with less ramp-up.</p></div>
+ <div class="wcard"><span class="wcard-icon">🏡</span><h3>Real Estate Operations Background</h3><p>Lead vetting, calendar coordination, and CRM updates — I understand the pace of real estate operations and can support teams with less ramp-up.</p></div>
  <div class="wcard"><span class="wcard-icon">⚙️</span><h3>Systems Thinker</h3><p>I understand what's behind the tasks — workflow design, documentation, process consistency. I don't just complete work; I keep systems running smoothly.</p></div>
  <div class="wcard"><span class="wcard-icon">🌏</span><h3>Remote-Ready, Long-Term Focused</h3><p>Comfortable supporting remote teams across different schedules and time zones. I value stable, long-term work and consistent day-to-day support.</p></div>
  <div class="wcard"><span class="wcard-icon">🤖</span><h3>AI-Enhanced, Not AI-Dependent</h3><p>I use AI tools to increase speed and quality — not to replace judgment. You get operational maturity supported by modern productivity tools.</p></div>
@@ -457,7 +606,7 @@ footer{background:#060e17;padding:3.5rem 2.5rem 2.5rem;border-top:1px solid rgba
  <h2>How I Work</h2>
  <div class="approach-grid">
  <div class="ap-card"><div class="ap-num">01</div><h3>Communication First</h3><p>I keep you updated, respond promptly, and flag issues early. You'll never wonder what's happening on my end.</p></div>
- <div class="ap-card"><div class="ap-num">02</div><h3>Organized by Default</h3><p>Clean pipelines, documented workflows, and structured follow-up. I build systems that reduce chaos, not add to it.</p></div>
+ <div class="ap-card"><div class="ap-num">02</div><h3>Organized by Default</h3><p>Clean records, documented workflows, and structured follow-up. I build systems that reduce chaos, not add to it.</p></div>
  <div class="ap-card"><div class="ap-num">03</div><h3>Consistent & Reliable</h3><p>Nine years of perfect attendance isn't a coincidence. I show up, I follow through, and I treat every support task with care and accountability.</p></div>
  </div>
  <div class="approach-quote">
@@ -474,9 +623,9 @@ footer{background:#060e17;padding:3.5rem 2.5rem 2.5rem;border-top:1px solid rgba
  <p class="lead">Four focused service areas — each backed by real, proven experience.</p>
  <div class="svc-grid">
  <div class="svc"><div class="svc-num">01</div><h3>Customer Support & Escalation Management</h3><p>Nine years of high-volume phone, email, and chat support for U.S. telecom clients. I handle billing, technical, and account-related concerns while keeping communication professional and customer-focused.</p><div class="svc-tags"><span class="stag">Phone / Email / Chat</span><span class="stag">Escalation Handling</span><span class="stag">Inbound Sales</span><span class="stag">Client Retention</span></div></div>
- <div class="svc"><div class="svc-num">02</div><h3>Real Estate Lead Qualification & Appointment Setting</h3><p>Vetting inbound buyers, coordinating property viewings, and managing follow-up sequences so your agents stay focused on closing while your pipeline stays organized and warm.</p><div class="svc-tags"><span class="stag">Lead Vetting</span><span class="stag">Appointment Setting</span><span class="stag">Follow-Up Sequences</span><span class="stag">Pipeline Tracking</span></div></div>
+ <div class="svc"><div class="svc-num">02</div><h3>Real Estate Lead Qualification & Appointment Setting</h3><p>Vetting inbound buyers, coordinating property viewings, and managing follow-ups so your agents stay focused on closing while lead records stay organized and warm.</p><div class="svc-tags"><span class="stag">Lead Vetting</span><span class="stag">Appointment Setting</span><span class="stag">Lead Follow-Up</span><span class="stag">Lead Tracking</span></div></div>
  <div class="svc"><div class="svc-num">03</div><h3>Administrative & Calendar Support</h3><p>Calendar management, inbox organization, client communication, task coordination, and day-to-day admin support that helps business owners stay organized.</p><div class="svc-tags"><span class="stag">Calendar Management</span><span class="stag">Inbox Support</span><span class="stag">Task Coordination</span><span class="stag">Admin Support</span></div></div>
- <div class="svc"><div class="svc-num">04</div><h3>CRM & Workflow Support</h3><p>Keeping your CRM accurate, pipelines organized, and workflows moving. GoHighLevel practice with the adaptability to work inside Salesforce, Zendesk, or HubSpot-style workflows.</p><div class="svc-tags"><span class="stag">GoHighLevel</span><span class="stag">Pipeline Management</span><span class="stag">Data Entry</span><span class="stag">AI-Assisted Productivity</span></div></div>
+ <div class="svc"><div class="svc-num">04</div><h3>CRM & Workflow Support</h3><p>Keeping your CRM accurate, records organized, and workflows moving. GoHighLevel practice with the adaptability to work inside Salesforce, Zendesk, or HubSpot-style workflows.</p><div class="svc-tags"><span class="stag">GoHighLevel</span><span class="stag">CRM Updates</span><span class="stag">Data Entry</span><span class="stag">AI-Assisted Productivity</span></div></div>
  </div>
  </div>
 </section>
@@ -505,17 +654,18 @@ footer{background:#060e17;padding:3.5rem 2.5rem 2.5rem;border-top:1px solid rgba
  </div>
  </div>
  <div class="tl-item">
- <div class="tl-date"><span class="tl-range">May 2024 – December 2025</span><span class="tl-co">Filipino Homes</span></div>
+ <div class="tl-date"><span class="tl-range">May 2024 – May 2026</span><span class="tl-co">Filipino Homes</span></div>
  <div class="tl-dot-col"><div class="tl-dot"></div></div>
  <div>
  <div class="tl-role">Part-Time Real Estate Lead Qualifier & Appointment Setter</div>
  <div class="tl-badge">Part-Time · Real Estate · Remote</div>
  <p class="tl-desc">Supported real estate operations through inbound property inquiry handling, lead qualification, CRM updates, follow-up communication, and appointment coordination.</p>
  <ul class="tl-list">
- <li>Managed inbound property inquiries and qualified local and international buyers based on goals, budget, and property preferences</li>
- <li>Maintained organized lead tracking and CRM updates to support follow-ups and pipeline management</li>
- <li>Conducted lead follow-up communication to improve engagement and maintain organized sales workflows</li>
- <li>Coordinated appointments, viewing schedules, and calendar management for real estate brokers and field agents</li>
+ <li>Managed Facebook-based property inquiries from OFWs, local buyers, and high-net-worth clients.</li>
+ <li>Qualified buyers based on budget, location preference, property goals, and readiness to purchase.</li>
+ <li>Coordinated viewing schedules and appointments for a real estate agent.</li>
+ <li>Maintained lead tracking and follow-ups through Facebook Messenger, spreadsheets, and CRM-style tracking.</li>
+ <li>Conducted follow-ups with interested buyers to answer inquiries, maintain engagement, and schedule next steps.</li>
  </ul>
  </div>
  </div>
@@ -537,24 +687,24 @@ footer{background:#060e17;padding:3.5rem 2.5rem 2.5rem;border-top:1px solid rgba
  <div class="op-card"><div class="op-icon">⚡</div><span>CRM Management</span></div>
  <div class="op-card"><div class="op-icon">📅</div><span>Admin & Calendar Support</span></div>
  <div class="op-card"><div class="op-icon">🏡</div><span>Lead Qualification</span></div>
- <div class="op-card"><div class="op-icon">🔄</div><span>Workflow Coordination</span></div>
+ <div class="op-card"><div class="op-icon">🔄</div><span>Appointment &amp; Schedule Coordination</span></div>
  <div class="op-card"><div class="op-icon">📊</div><span>Real Estate Ops</span></div>
  </div>
  <div class="pills-wrap">
  <div class="st-col-title">Core Skills</div>
  <div class="pills">
  <span class="pill hi">Customer Escalation Handling</span>
- <span class="pill hi">CRM Updates &amp; Pipeline Tracking</span>
- <span class="pill hi">Real Estate Lead Management</span>
- <span class="pill">Inbound Sales & Upselling</span>
+ <span class="pill hi">CRM &amp; Lead Updates</span>
+ <span class="pill hi">Real Estate Lead Qualification</span>
  <span class="pill hi">Appointment Setting</span>
  <span class="pill hi">Email &amp; Chat Support</span>
- <span class="pill hi">Lead Follow-Up Sequences</span>
+ <span class="pill hi">Lead Follow-Up</span>
  <span class="pill">Inbox Management</span>
  <span class="pill">Process Documentation</span>
  <span class="pill">Cross-Timezone Coordination</span>
  <span class="pill">Client Retention</span>
- <span class="pill">Data Entry & Accuracy</span>
+ <span class="pill">Data Entry &amp; Accuracy</span>
+ <span class="pill hi">Inbound Sales Support</span>
  </div>
  </div>
  </div>
@@ -593,7 +743,8 @@ footer{background:#060e17;padding:3.5rem 2.5rem 2.5rem;border-top:1px solid rgba
  <div class="wrap">
  <div class="s-tag">Get in Touch</div>
  <h2>Let's Work Together</h2>
- <p class="c-desc">Ready to support your business with reliable customer communication, CRM updates, appointment setting, lead follow-up, and real estate operations support. Clear, organized, and professional from day one.</p>
+ <p class="c-desc">Need reliable remote support for customer communication, lead follow-up, CRM updates, or day-to-day operations? Let's talk.</p>
+ <p class="contact-proof">Built on 9 years of consistent customer support, reliable attendance, and real client communication across phone, chat, email, sales, and real estate lead follow-up.</p>
  <div class="c-info-row">
  <div class="c-item"><div class="c-icon">✉️</div><div><div class="c-label">Email</div><div class="c-val">genesis.scott.nunez@gmail.com</div></div></div>
  <div class="c-item"><div class="c-icon">📱</div><div><div class="c-label">WhatsApp</div><div class="c-val">+63 998 445 5192</div></div></div>
@@ -603,15 +754,16 @@ footer{background:#060e17;padding:3.5rem 2.5rem 2.5rem;border-top:1px solid rgba
  <div class="book-card">
  <div class="book-glow"></div>
  <div class="book-inner">
+ <div class="availability-badge"><span></span>Available for Remote Work</div>
  <div class="book-tag"><span class="book-pulse"></span>Available for Discovery Calls</div>
  <h3 class="book-h">Ready to Get Started?</h3>
- <p class="book-sub">Pick a time that works for you. No email ping-pong — just a direct, no-pressure 20-minute call to see if we're a good fit.</p>
+ <p class="book-sub">Pick a time that works for you. No email ping-pong — just a direct, no-pressure 30-minute call to see if we're a good fit.</p>
  <a href="https://calendar.app.google/MM4NTDqZ4q5gtJwGA" target="_blank" rel="noopener noreferrer" class="book-btn">
  <span class="shine"></span>
  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
  Schedule a Discovery Call
  </a>
- <p class="book-note">Free · 20 minutes · No commitment</p>
+ <p class="book-note">Free · 30 minutes · No commitment</p>
  </div>
  </div>
  </div>
